@@ -1,5 +1,5 @@
 # HASS-BBC-envirobit
-Stream sensor readings over the serial from the BBC micropython envirobit to Home-Assistant. 
+Stream sensor readings over the serial from the BBC micropython [envirobit](https://github.com/pimoroni/micropython-envirobit) to Home-Assistant. 
 
 ## Usage
 I'm using a Mac. To check which port the microbit is on I run:
@@ -21,3 +21,7 @@ sensor:
 ```
 
 We then use template sensors to break out the data fields. 
+
+<p align="center">
+<img src="https://github.com/robmarkcole/HASS-BBC-envirobit/blob/master/usage.png" width="500">
+</p>
