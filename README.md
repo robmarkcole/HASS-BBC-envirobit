@@ -14,7 +14,7 @@ In my case the microbit is connected on **/dev/cu.usbmodem14342**. I now use [sc
 ```
 screen /dev/cu.usbmodem14342 115200
 ```
-Note that if you get any funnry errors when connecting, check that there is not already a screen session open using the Activity monitor, and kill any existing processes. You can also kill a screen session using **ctrl + a + k**.
+Note that if you get any funny errors when connecting, check that there is not already a screen session open using the Activity monitor, and kill any existing processes. You can also kill a screen session using **ctrl + a + k**.
 
 We can now configure Home-Assistant to display the data feed. I add to my Home-Assistant config:
 ```yaml
@@ -72,5 +72,5 @@ binary_sensor:
 I discovered that you can't mix numerical and text data in the payload string. If you try Home-Assistant displays no data.
 
 <p align="center">
-<img src="https://github.com/robmarkcole/HASS-BBC-envirobit/blob/master/usage.png" width="500">
+<img src="https://github.com/robmarkcole/HASS-BBC-envirobit/blob/master/usage.png" width="900">
 </p>
