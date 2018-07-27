@@ -13,14 +13,22 @@ screen /dev/cu.usbmodem14342 115200
 Note that if you get any funnry errors when connecting, check that there is not already a screen session open using the Activity monitor, and kill any existing processes. You can also kill a screen session using **ctrl + a + k**.
 
 We can now configure Home-Assistant to display the data feed. I add to my Home-Assistant config:
-```
+```yaml
 sensor:
   - platform: serial
     serial_port: /dev/cu.usbmodem14342
     baudrate: 115200
 ```
 
-We then use template sensors to break out the data fields. 
+We then use template sensors to break out the data fields. Under `sensor`:
+```yaml
+  - platform: template
+    sensors:
+      temperature:
+        friendly_name: Temperature_microbit
+        unit_of_measurement: "°C"
+        value_template: "{{ states.sensor.serial_sensor.attributes.T }}"
+```
 
 <p align="center">
 <img src="https://github.com/robmarkcole/HASS-BBC-envirobit/blob/master/usage.png" width="500">

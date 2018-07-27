@@ -135,6 +135,6 @@ if __name__ == "__main__":
     b = bme280()
     while True:
         t, p, h, a = b.all()
-        data = {'T':t, 'P':p, 'H':h, 'A':a}
-        print(data)
+        data_string = """ "T": {t}, "P": {p}, "H": {h}, "A": {a}""".format(t=t,p=p,h=h,a=a)
+        print(""" {""" + data_string + """ } """)
         microbit.sleep(1000)
