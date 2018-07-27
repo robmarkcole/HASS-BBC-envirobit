@@ -134,7 +134,17 @@ class bme280():
 if __name__ == "__main__":
     b = bme280()
     while True:
+        # Lets use the buttons
+        b_a=microbit.button_a.is_pressed() # Button A
+        b_b=microbit.button_b.is_pressed() # Button B
+        if b_a:
+            microbit.display.scroll("A")
+        elif b_b:
+            microbit.display.scroll("B")
+        
+        # Now use the sensors
         t, p, h, a = b.all()
-        data_string = """ "T": {t}, "P": {p}, "H": {h}, "A": {a}""".format(t=t,p=p,h=h,a=a)
+        data_string = """ "T": {t}, "P": {p}, "H": {h}, "A": {a}, "b_a": {b_a}, "b_b": {b_b}  """.format(
+            t=t,p=p,h=h,a=a,b_a=b_a, b_b=b_b)
         print(""" {""" + data_string + """ } """)
         microbit.sleep(1000)

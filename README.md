@@ -1,5 +1,5 @@
 # HASS-BBC-envirobit
-Stream sensor readings over the serial from the BBC micropython [envirobit](https://github.com/pimoroni/micropython-envirobit) to [Home-Assistant](https://www.home-assistant.io/). Inspired by https://www.home-assistant.io/blog/2017/10/23/simple-analog-sensor/
+Stream button presses and BME280 sensor readings over the serial from the BBC micropython [envirobit](https://github.com/pimoroni/micropython-envirobit) to [Home-Assistant](https://www.home-assistant.io/). Inspired by https://www.home-assistant.io/blog/2017/10/23/simple-analog-sensor/
 
 ## Usage
 I'm using a Mac. To check which port the microbit is on I run:
