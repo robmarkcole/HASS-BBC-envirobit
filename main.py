@@ -135,16 +135,18 @@ if __name__ == "__main__":
     b = bme280()
     while True:
         # Lets use the buttons
-        b_a=microbit.button_a.is_pressed() # Button A
-        b_b=microbit.button_b.is_pressed() # Button B
-        if b_a:
+        ba=0 # Button A. Appears HA requires int or float over serial
+        bb=0 # Button B
+        if microbit.button_a.is_pressed():
             microbit.display.scroll("A")
-        elif b_b:
+            ba=1
+        elif microbit.button_b.is_pressed():
             microbit.display.scroll("B")
+            bb=1
         
         # Now use the sensors
         t, p, h, a = b.all()
-        data_string = """ "T": {t}, "P": {p}, "H": {h}, "A": {a}, "b_a": {b_a}, "b_b": {b_b}  """.format(
-            t=t,p=p,h=h,a=a,b_a=b_a, b_b=b_b)
+        data_string = """ "T": {t}, "P": {p}, "H": {h}, "A": {a}, "ba": {ba}, "bb": {bb}  """.format(
+            t=t,p=p,h=h,a=a,ba=ba,bb=bb)
         print(""" {""" + data_string + """ } """)
         microbit.sleep(1000)
