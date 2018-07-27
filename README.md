@@ -30,6 +30,31 @@ We then use template sensors to break out the data fields. Under `sensor`:
         value_template: "{{ states.sensor.serial_sensor.attributes.T }}"
 ```
 
+The final config for all sensors is:
+```yaml
+  - platform: serial
+    serial_port: /dev/cu.usbmodem14342
+    baudrate: 115200
+  - platform: template
+    sensors:
+      temperature:
+        friendly_name: Temperature_microbit
+        unit_of_measurement: "°C"
+        value_template: "{{ states.sensor.serial_sensor.attributes.T }}"
+      pressure:
+        friendly_name: Pressure_microbit
+        unit_of_measurement: "hPa"
+        value_template: "{{ states.sensor.serial_sensor.attributes.P }}"
+      humidity:
+        friendly_name: Humidity_microbit
+        unit_of_measurement: "%"
+        value_template: "{{ states.sensor.serial_sensor.attributes.H }}"
+      altitude:
+        friendly_name: Altitude_microbit
+        unit_of_measurement: "feet"
+        value_template: "{{ states.sensor.serial_sensor.attributes.A }}"
+```
+
 <p align="center">
 <img src="https://github.com/robmarkcole/HASS-BBC-envirobit/blob/master/usage.png" width="500">
 </p>
