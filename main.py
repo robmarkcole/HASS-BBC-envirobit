@@ -146,8 +146,13 @@ if __name__ == "__main__":
         
         # Now use the sensors
         t, p, h, a = b.all()
+        rounding_digits = 1
+        t = round(t, rounding_digits)
+        p = round(p, rounding_digits)
+        h = round(h, rounding_digits)
+        a = round(a, rounding_digits)
         data_string = """ "T": {t}, "P": {p}, "H": {h}, "A": {a}, "ba": {ba}, "bb": {bb}  """.format(
             t=t,p=p,h=h,a=a,ba=ba,bb=bb)
         print(""" {""" + data_string + """ } """)
-        sleep_sec = 5
+        sleep_sec = 1
         microbit.sleep(sleep_sec*1000)
