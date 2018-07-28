@@ -61,6 +61,15 @@ binary_sensor:
       button_b:
         friendly_name: Button_B_microbit
         value_template: "{{ states.sensor.serial_sensor.attributes.bb |float > 0}}"
+
+history_graph:
+  microbit:
+    entities:
+      - sensor.temperature
+      - sensor.pressure
+      - sensor.humidity
+      - sensor.altitude
+
 ```
 ## Mac usage
 To check which port the microbit is on I run (on Mac/unix):

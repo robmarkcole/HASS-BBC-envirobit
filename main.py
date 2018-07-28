@@ -149,4 +149,5 @@ if __name__ == "__main__":
         data_string = """ "T": {t}, "P": {p}, "H": {h}, "A": {a}, "ba": {ba}, "bb": {bb}  """.format(
             t=t,p=p,h=h,a=a,ba=ba,bb=bb)
         print(""" {""" + data_string + """ } """)
-        microbit.sleep(1000)
+        sleep_sec = 5
+        microbit.sleep(sleep_sec*1000)
