@@ -3,7 +3,7 @@ Stream button presses and BME280 sensor readings over the serial from the BBC mi
 
 ## BBC-envirobit setup
 `main.py` should be flashed to tbe BBC microbit. On pressing the `A` or `B` buttons the display will scroll the pressed button. The buttons are displayed as a binary sensor in Home-Assistant and can be used to trigger automations. 
-Data from the BME (temperature, pressure, humidity and altitude) are publihsed to Home-Assistant every second (the sleep time is a variable `sleep_sec` which you can optimise). The number of decimal places that data is reported to is 1dp by default, but can be varied with the `rounding_digits` variable. Plug the microbit into the USB port on your Home-Assistant computer. 
+Data from the BME (temperature, pressure, humidity, but not altitude as these values were meaningless in my testing) are publihsed to Home-Assistant every second (the sleep time is a variable `sleep_sec` which you can optimise). The number of decimal places that data is reported to is 1dp by default, but can be varied with the `rounding_digits` variable. Plug the microbit into the USB port on your Home-Assistant computer. 
 
 ## Home-Assistant Usage with HASSOS
 
@@ -47,10 +47,6 @@ sensor:
         friendly_name: Humidity_microbit
         unit_of_measurement: "%"
         value_template: "{{ states.sensor.serial_sensor.attributes.H }}"
-      altitude:
-        friendly_name: Altitude_microbit
-        unit_of_measurement: "feet"
-        value_template: "{{ states.sensor.serial_sensor.attributes.A }}"
 
 binary_sensor:
   - platform: template
@@ -68,8 +64,6 @@ history_graph:
       - sensor.temperature
       - sensor.pressure
       - sensor.humidity
-      - sensor.altitude
-
 ```
 ## Mac usage
 To check which port the microbit is on I run (on Mac/unix):
